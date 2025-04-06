@@ -1,42 +1,29 @@
----
+# secret-reader-binding.yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: binding-admin-service-account
-  namespace: prop-development
+  name: read-secrets
+  namespace: secure-space
 subjects:
-- kind: ServiceAccount
-  name: admin-service-account
-  namespace: prop-development
+- kind: User
+  name: secure-operator
+  apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: Role
-  name: admin-role
-  apiGroup: rbac.authorization.k8s.io
+  name: secret-reader
+  apiGroup: rbac.authorization.k8s.io 
 ---
+# devops-binding.yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: binding-client-service-account
-  namespace: prop-development
+  name: devops-access
+  namespace: development
 subjects:
-- kind: ServiceAccount
-  name: client-service-account
-  namespace: prop-development
+- kind: Group
+  name: devops-group
+  apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: Role
-  name: client-role
-  apiGroup: rbac.authorization.k8s.io
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
-metadata:
-  name: binding-partner-service-account
-  namespace: prop-development
-subjects:
-- kind: ServiceAccount
-  name: partner-service-account
-  namespace: prop-development
-roleRef:
-  kind: Role
-  name: partner-role
-  apiGroup: rbac.authorization.k8s.io
+  name: devops-role
+  apiGroup: rbac.authorization.k8s.io 

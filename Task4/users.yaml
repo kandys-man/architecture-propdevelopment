@@ -1,23 +1,44 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: secure-space
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: prop-development
+  name: operations  
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: development 
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: analytics   
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: testing     
 ---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: admin-service-account
-  namespace: prop-development
+  name: secure-space-service-account
+  namespace: secure-space
 ---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: clientadmin-service-account
-  namespace: prop-development
+  name: development-service-account
+  namespace: development
 ---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: partner-service-account
-  namespace: prop-development
+  name: analytics-service-account
+  namespace: analytics
+
+
